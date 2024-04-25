@@ -27,7 +27,6 @@ export default function SongCard(props) {
   }
 
 async function removefromFavorites() {
-  console.log(props.dbObject);
   try {
     await axios.delete(`${props.SERVER_URL}/favorites/${props.dbObject._id}`, props.config);
     await props.getFavorites(); // Wait for getFavorites to complete before proceeding
