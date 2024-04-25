@@ -56,7 +56,7 @@ class MainPage extends Component {
           Authorization: `Bearer ${token}`,
         },
         method: 'GET',
-        baseURL: 'http://localhost:3005',
+        baseURL: SERVER_URL,
         url: '/test',
       };
 
