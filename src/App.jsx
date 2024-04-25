@@ -20,7 +20,7 @@ const SERVER_URL = import.meta.env.VITE_SERVER_URI;
 
 
 
-function App() {
+function App(props) {
 
   const { isAuthenticated } = useAuth0();
 
@@ -34,35 +34,30 @@ function App() {
   }, []);
 
   async function getToken() {
-    return await this.props.auth0.getIdTokenClaims()
+    return await props.auth0.getIdTokenClaims()
     .then(res => res.__raw)
     .catch(err => console.error(err))
   }
 
 
   async function getArtists() {
-
-    const jwt = await getToken();
-    setConfig({ headers: { 'Authorization': `Bearer ${jwt}` } }, async () =>{
-      try {
-      
-        const response = await axios.get(`${SERVER_URL}/artist/${query}`)
-        if(!response.data)
-          return;
-        setSongData(response.data);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-
-    } )
-    
-
+    try {
+      const jwt = await getToken();
+      setConfig({ headers: { Authorization: `Bearer ${jwt}` } });
+  
+      const response = await axios.get(`${SERVER_URL}/artist/${query}`, config);
+      if (!response.data) return;
+  
+      setSongData(response.data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+    getFavorites()
   }
-
   async function getFavorites(){
 
     try{
-      const favorites = await axios.get(`${SERVER_URL}/favorites`);
+      const favorites = await axios.get(`${SERVER_URL}/favorites`, config);
       setFavoritesData(favorites.data);
 
     } catch (error) {
