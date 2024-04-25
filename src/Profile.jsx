@@ -15,7 +15,7 @@ function Profile(){
   return (
     isAuthenticated && (
           <Card style={{ width: '18rem' }}>
-          <Card.Img variant="top" src={user.picture} alt={user.name} />
+          <Card.Img variant="top" src={user.picture && user.picture} alt={user.name} style={{width: '70px'}} />
           <Card.Body>
             <Card.Title>{user.name}</Card.Title>
             <Card.Text>

@@ -11,11 +11,13 @@ export default function SongCard(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  
 
 
   async function addToFavorites() {
+    
     try{
-      await axios.post(`${props.SERVER_URL}/artist`, {'songObject': props.song});
+      await axios.post(`${props.SERVER_URL}/artist`, {'songObject': props.song}, props.config);
       await props.getFavorites();
     } catch (error) {
       console.error('Error:', error);
@@ -25,8 +27,9 @@ export default function SongCard(props) {
   }
 
 async function removefromFavorites() {
+  console.log(props.dbObject);
   try {
-    await axios.delete(`${props.SERVER_URL}/favorites/${props.dbObject._id}`);
+    await axios.delete(`${props.SERVER_URL}/favorites/${props.dbObject._id}`, props.config);
     await props.getFavorites(); // Wait for getFavorites to complete before proceeding
   } catch (error) {
     console.error('Error:', error);
@@ -39,9 +42,9 @@ async function removefromFavorites() {
   return (
     <>
       <Card style={{ width: '100%' }}>
-        <Card.Img variant="top" src={props.song.strTrackThumb} />
+        <Card.Img variant="top" src={props.song['strTrackThumb']} />
         <Card.Body style={{ padding: '0px' }}>
-          <Card.Title>{props.song.strTrack}</Card.Title>
+          <Card.Title>{props.song.strTrack || props.song.songObject.strTrack}</Card.Title>
           <Card.Text>
 
           </Card.Text>
