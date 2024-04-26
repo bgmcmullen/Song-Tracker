@@ -1,8 +1,21 @@
-# React + Vite
+# Song Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Goal: 
+Enables users to search for the top 10 tracks of a musical artist and save their favorite tracks.
+## Features:
+Search functionality for finding musical artists./
+Display of top 10 tracks for the selected artist./
+Ability to save favorite tracks to a list saved in a database./
+Options for sharing favorite tracks on social media.
+## Users:
+Anyone wanting keep track of popular tracks of top arts
+## Benefits: 
+Convenient way to discover and save favorite tracks, easy sharing options for recommendations with friends.
 
-Currently, two official plugins are available:
+## Developer
+### Brendan McMullen
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Resources
+Auth0/
+TheAudioDB/
+Chatgpt
