@@ -19,3 +19,6 @@ Convenient way to discover and save favorite tracks, easy sharing options for re
 Auth0\
 TheAudioDB\
 Chatgpt
+
+## [Domain Model](Song-Tracker_domain-model.png)
+## [Wire Frame](Song_Tracker_WireFrame.pdf)
