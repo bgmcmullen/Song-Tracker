@@ -3,9 +3,9 @@
 ## Goal: 
 Enables users to search for the top 10 tracks of a musical artist and save their favorite tracks.
 ## Features:
-Search functionality for finding musical artists./
-Display of top 10 tracks for the selected artist./
-Ability to save favorite tracks to a list saved in a database./
+Search functionality for finding musical artists.\
+Display of top 10 tracks for the selected artist.\
+Ability to save favorite tracks to a list saved in a database.\
 Options for sharing favorite tracks on social media.
 ## Users:
 Anyone wanting keep track of popular tracks of top arts
@@ -16,6 +16,6 @@ Convenient way to discover and save favorite tracks, easy sharing options for re
 ### Brendan McMullen
 
 ## Resources
-Auth0/
-TheAudioDB/
+Auth0\
+TheAudioDB\
 Chatgpt
