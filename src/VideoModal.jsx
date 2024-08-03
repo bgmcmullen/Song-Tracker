@@ -1,7 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-
-
+import Accordion from 'react-bootstrap/Accordion'; // Importing Accordion component from React Bootstrap.
 
 export default function VideoModal(props) {
 
@@ -42,6 +41,15 @@ export default function VideoModal(props) {
               allowFullScreen
             ></iframe>
           </div>
+           {/* Accordion to show description */}
+           {props.strDescriptionEN && <Accordion>
+              <Accordion.Item eventKey="0" style={{ margin: '0px' }}>
+                <Accordion.Header>Description</Accordion.Header>
+                <Accordion.Body>
+                  {props.strDescriptionEN}
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={props.handleClose}>

@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react'; // Importing useState hook from React.
 import Button from 'react-bootstrap/Button'; // Importing Button component from React Bootstrap.
 import Card from 'react-bootstrap/Card'; // Importing Card component from React Bootstrap.
-import Accordion from 'react-bootstrap/Accordion'; // Importing Accordion component from React Bootstrap.
 import VideoModal from './VideoModal'; // Importing VideoModal component.
 import axios from 'axios'; // Importing Axios for making HTTP requests.
 
@@ -47,6 +47,12 @@ export default function SongCard(props) {
     }
   }
 
+
+  const buttonStyle = {
+    padding: '2px',
+    width: '90%',
+    fontSize: '1em' 
+  };
   return (
     <>
       {/* Card displaying song information */}
@@ -54,28 +60,16 @@ export default function SongCard(props) {
         <Card.Img variant="top" src={props.song['strTrackThumb']} />
         <Card.Body style={{ padding: '0px' }}>
           <Card.Title>{props.song.strTrack || props.song.songObject.strTrack}</Card.Title>
-          <Card.Text>
-            {/* Additional information about the song */}
-          </Card.Text>
-          {/* Accordion to show description */}
-          {props.song.strDescriptionEN && <Accordion>
-              <Accordion.Item eventKey="0" style={{ margin: '0px' }}>
-                <Accordion.Header>Description</Accordion.Header>
-                <Accordion.Body>
-                  {props.song.strDescriptionEN}
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>}
           {/* Button to view video */}
-          {props.song.strMusicVid && <Button variant="primary" onClick={handleShow}>View Video</Button>}
+          {(props.song.strMusicVid || props.song.strDescriptionEN) && <Button style={buttonStyle} variant="primary" onClick={handleShow}>More Info</Button>}
           {/* Button to add to favorites */}
-          {!props.isFavorite && <Button variant="secondary" onClick={addToFavorites}>Add to Favorites</Button>}
+          {!props.isFavorite && <Button style={buttonStyle} variant="secondary" onClick={addToFavorites}>Add to Favorites</Button>}
           {/* Button to remove from favorites */}
-          {props.isFavorite && <Button variant="secondary" onClick={removeFromFavorites}>Remove from Favorites</Button>}
+          {props.isFavorite && <Button style={buttonStyle} variant="secondary" onClick={removeFromFavorites}>Remove from Favorites</Button>}
         </Card.Body>
       </Card>
       {/* Modal to display video */}
-      {props.song.strMusicVid && <VideoModal songTitle={props.song.strTrack} handleClose={handleClose} handleShow={handleShow} show={show} videoUrl={props.song.strMusicVid} />}
+      {props.song.strMusicVid && <VideoModal songTitle={props.song.strTrack} handleClose={handleClose} handleShow={handleShow} show={show} videoUrl={props.song.strMusicVid} strDescriptionEN={props.song.strDescriptionEN}/>}
     </>
   )
 
