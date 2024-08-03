@@ -36,7 +36,7 @@ class MainPage extends Component {
     // Call the getFavorites method when component mounts.
     this.getFavorites();
   }
-  
+
   // Method to fetch artists based on search query.
   async getArtists() {
     try {
@@ -86,7 +86,7 @@ class MainPage extends Component {
 
     return (
       <>
-        <Profile/> {/* Render the Profile component. */}
+        <Profile /> {/* Render the Profile component. */}
         <Form>
           {/* Search form for artists. */}
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -103,17 +103,26 @@ class MainPage extends Component {
             <Col>
               <h2>Top 10</h2>
               {/* Render top 10 songs. */}
-              {songData.length > 0 && songData.map((song, index) => (
-                <SongCard key={index} song={song} SERVER_URL={SERVER_URL} isFavorite={false} getFavorites={() => this.getFavorites()} config={this.state.config}/>
-              ))}
+              <Row>
+                {songData.length > 0 && songData.map((song, index) => (
+                  <Col key={index} xs={12} sm={6} md={4} lg={3}>
+                    <SongCard key={index} song={song} SERVER_URL={SERVER_URL} isFavorite={false} getFavorites={() => this.getFavorites()} config={this.state.config} />
+                  </Col>
+                ))}
+              </Row>
             </Col>
             <Col>
               <h2>Favorites</h2>
               {/* Render user favorites. */}
-              {favoritesData.length > 0 && favoritesData.map((song, index) => (
-                <SongCard key={index} dbObject={song} song={song.songObject.songObject} SERVER_URL={SERVER_URL} isFavorite={true} getFavorites={() => this.getFavorites()} config={this.state.config}/>
-              ))}
+              <Row>
+                {favoritesData.length > 0 && favoritesData.map((song, index) => (
+                  <Col key={index} xs={12} sm={6} md={4} lg={3}>
+                    <SongCard key={index} dbObject={song} song={song.songObject.songObject} SERVER_URL={SERVER_URL} isFavorite={true} getFavorites={() => this.getFavorites()} config={this.state.config} />
+                  </Col>
+                ))}
+              </Row>
             </Col>
+
           </Row>
         </Container>
       </>
